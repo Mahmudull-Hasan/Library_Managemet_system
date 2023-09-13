@@ -1,0 +1,16 @@
+.table-action ul{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.table-action ul li{
+  list-style: none;
+  display: inline;
+  margin: 0 5px;
+}
+.table-action ul li .fa-edit{
+  color:green;
+}
+.table-action ul li .fa-trash{
+  color:red;
+}
