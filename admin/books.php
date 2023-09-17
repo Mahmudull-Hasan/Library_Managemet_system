@@ -109,8 +109,20 @@
                                                                     <td><?php echo $title; ?></td>
                                                                     <td><?php echo $sub_title; ?></td>
                                                                     <td><?php echo $author_name; ?></td>
-                                                                    <td><?php echo $cat_id; ?></td>
-                                                                    <td><?php echo $quantity; ?></td>
+                                                                    <td>
+                                                                        <?php 
+                                                                            $sql = "SELECT * FROM category WHERE cat_id = '$cat_id'";
+                                                                            $categoryName = mysqli_query($db, $sql);
+                                                                            while( $row = mysqli_fetch_assoc($categoryName))
+                                                                            {
+                                                                                $cat_id = $row['cat_id'];
+                                                                                $cat_name = $row['cat_name'];
+                                                                                ?>
+                                                                                <span class="badge badge-info"><?php echo $cat_name; ?></span>
+                                                                            <?php }
+                                                                        ?>
+                                                                    </td>
+                                                                    <td><?php echo $quantity; ?> Pcs </td>
                                                                     
                                                                     <td>
                                                                         <?php
@@ -182,14 +194,147 @@
 
 
                                 else if($do == 'Add')
-                                {
-                               
+                                {   
+                                ?>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Register A New Book</h3>
+                                        </div>
+                                    
+                                        <div class="card-body">
+                                            <form action="books.php?do=Store"  method="POST" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Title</label>
+                                                            <input class="form-control" type="text" name="title"  required="required" placeholder="Title of the Book" autocomplete="off">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Sub Title</label>
+                                                            <input class="form-control" type="text" name="sub_title" placeholder="Sub Title" autocomplete="off">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Author Name</label>
+                                                            <input class="form-control" type="text" name="author" placeholder="Author Name" autocomplete="off">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Quantity</label>
+                                                            <input class="form-control" type="text" name="quantity" placeholder="Quantity" autocomplete="off">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Category</label>
+                                                            <select class="form-control" name="cat_id">
+                                                                
+                                                                <?php 
+                                                                    $sql = "SELECT * FROM category WHERE is_parent = 0 ORDER BY cat_name ASC";
+                                                                    $parentCat = mysqli_query($db, $sql);
+                                                                    while ( $row = mysqli_fetch_assoc($parentCat))
+                                                                    {
+                                                                        $p_cat_id          = $row['cat_id'];
+                                                                        $p_cat_name        = $row['cat_name'];
+                                                                        ?>
+                                                                            <option value="<?php echo $p_cat_id; ?>"><?php echo $p_cat_name; ?></option>
+                                                                        <?php
+
+                                                                        $query = "SELECT * FROM category WHERE is_parent = '$p_cat_id' ORDER BY cat_name ASC";
+                                                                        $childCat = mysqli_query($db, $query);
+                                                                        while( $row = mysqli_fetch_assoc($childCat)){
+                                                                            $c_cat_id          = $row['cat_id'];
+                                                                            $c_cat_name        = $row['cat_name'];
+
+                                                                            ?>
+                                                                            <option value="<?php echo $c_cat_id; ?>"> __ <?php echo $c_cat_name; ?></option>
+                                                                      <?php  }
+                                                                    }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Status</label>
+                                                            <select class="form-control" name="status">
+                                                                <option value="0">Please Select User Status</option>
+                                                                <option value="1">Active</option>
+                                                                <option value="2">Inactive</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <textarea class="form-control" id="description" name="description" rows="30"></textarea>
+                                                        </div>
+
+                                                        
+
+                                                        <div class="form-group">
+                                                            <label for="">Book Thumbnail</label>
+                                                            <input type="file" name="image" class="form-control-file">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <input type="submit" class="btn btn-success" name="addBook" value="Register the book">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                <?php
                                 }
 
 
                                 else if ( $do == 'Store'){
+                                    if ( isset ( $_POST['addBook']))
+                                    {
+                                        $title          = $_POST['title'];
+                                        $sub_title      = $_POST['sub_title'];
+                                        $author         = $_POST['author'];
+                                        $quantity       = $_POST['quantity'];
+                                        $cat_id         = $_POST['cat_id'];
+                                        $description    = $_POST['description'];
+                                        $status         = $_POST['status'];
 
+                                        $image              = $_FILES['image']['name'];
+                                        $image_temp         = $_FILES['image']['tmp_name'];
 
+                                        if(!empty($image))
+                                        {
+                                                
+                                            $image_name = rand(1, 999999) . '_' . $image;
+                                            move_uploaded_file($image_temp, "dist/img/books/$image_name");
+
+                                            $sql ="INSERT INTO books (title,	sub_title, description, cat_id, author_name, quantity, 	image, status ) VALUES ('$title', '$sub_title', '$description ', '$cat_id', '$author', '$quantity', '$image_name', '$status')";
+
+                                            $registerBook = mysqli_query($db, $sql);
+
+                                            if($registerBook){
+                                                header("Location: books.php?do=Manage");
+                                            }
+                                            else {
+                                                die("MYSQLi Error." . mysqli_error($db));
+                                            }
+                                        }
+                                        else 
+                                        {
+
+                                            $sql ="INSERT INTO book (title,	sub_title, description, cat_id, author_name, quantity, status ) VALUES ('$title', '$sub_title', '$description ', '$cat_id', '$author', '$quantity', '$status')";
+
+                                            $registerBook = mysqli_query($db, $sql);
+                                            if($registerBook){
+                                                header("Location: books.php?do=Manage");
+                                            }
+                                            else {
+                                                die("MYSQLi Error." . mysqli_error($db));
+                                            }
+                                        }
+                                    }
                                 }
 
 
@@ -218,3 +363,4 @@
         </div>
     <!-- Content Wrapper end -->
 <?php include "inc/footer.php";?>
+

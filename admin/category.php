@@ -326,7 +326,7 @@
                                         }
                                         else
                                         {
-                                            die ("My SQL query faild." . mysqli_error() );
+                                            die ("MYSQLi Error." . mysqli_error($db) );
                                         }
                                     }
                                    
@@ -470,7 +470,7 @@
                                         }
                                         else
                                         {
-                                            die ("My SQL query faild." . mysqli_error('') );
+                                            die ("MYSQLi Error." . mysqli_error($db) );
                                         }
                                     }
                                 }
