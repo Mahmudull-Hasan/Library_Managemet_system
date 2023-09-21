@@ -1,4 +1,124 @@
-h1{
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Mooli&display=swap');
+
+body{
+
+    font-family: 'Mooli', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Mooli', sans-serif;
+    /* font-family: 'Croissant One', cursive; */
+}
+
+
+
+h3{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Header and navbar css */
+.header-section {
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    color: blue;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Croissant One', cursive;
+}
+
+
+/* All section Css */
+.all-books{
+    padding: 50px 0;
+}
+
+.books-heading {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+/* Books section */
+.book-thumbnail{
+    position: relative;
+    padding: 10px;
+}
+.author-info{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    padding: 7px 0 ;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
     text-align: center;
-    padding-top: 200px;
+}
+.book-item {
+    width: 31%;
+    padding: 20px 0;
+    margin:10px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;;
+}
+
+.book-item .book-info {
+    padding: 15px 20px;
+}
+
+.book-item .book-info .quantity {
+    font-weight: 600;
+    font-size: 14px;
+}
+.book-item .book-info .book-btn {
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+    background: rgb(76, 76, 255);
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 30px;
+    display: block;
+    margin: 0 60px;
+    transition: .5s;
+}
+
+.book-item .book-info .book-btn:hover{
+    background: rgba(0, 0, 0, 0.658);
+    color: #FFFFFF;
+}
+
+/* sidebar css */
+
+.search-btn{
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+    background: rgb(76, 76, 255);
+    border-radius: 5px;
+    padding: 10px 30px;
+    display: block;
+    transition: .5s;
+}
+
+.search-btn:hover{
+    background: rgba(0, 0, 0, 0.658);
+    color: #FFFFFF;
 }
