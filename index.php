@@ -73,6 +73,4 @@
     </section>
     <!-- All book section end -->
 
-
-
 <?php include "inc/footer.php"; ?>

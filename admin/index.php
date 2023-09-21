@@ -136,7 +136,7 @@
 
 <?php 
   ob_end_flush();
-  session_destroy();
+  // session_destroy();
 ?>
 </body>
 </html>

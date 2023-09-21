@@ -382,10 +382,12 @@
                                                             <option value="0">Please Select User Status</option>
                                                             <option value="0" <?php if ($status == 0) {
                                                                                     echo 'selected';
-                                                                                } ?>>Inactive</option>
+                                                                                } ?>>Inactive
+                                                            </option>
                                                             <option value="1" <?php if ($status == 1) {
                                                                                     echo 'selected';
-                                                                                } ?>>Active</option>
+                                                                                } ?>>Active
+                                                            </option>
                                                         </select>
                                                     </div>
 
@@ -393,9 +395,10 @@
                                                         <label for="">Profile Picture</label>
                                                         <br>
                                                         <?php
-                                                        if (!empty($image)) { ?>
+                                                            if (!empty($image)) { ?>
                                                             <img src="dist/img/users/<?php echo $image; ?>" width="35">
-                                                        <?php } else { ?>
+                                                        <?php } 
+                                                            else { ?>
                                                             <h6>No Picture Uploaded!</h6>
                                                         <?php }
                                                         ?>

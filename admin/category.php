@@ -373,10 +373,10 @@
                                                             extract($row);
                                                         ?>
                                                             <option value="<?php echo $cCatId; ?>" <?php
-                                                                                                    if ($cCatId  == $is_parent) {
-                                                                                                        echo 'selected';
-                                                                                                    }
-                                                                                                    ?>><?php echo $cCatName; ?></option>
+                                                            if ($cCatId  == $is_parent) {
+                                                                echo 'selected';
+                                                            }
+                                                            ?>><?php echo $cCatName; ?></option>
                                                     <?php
 
                                                         }

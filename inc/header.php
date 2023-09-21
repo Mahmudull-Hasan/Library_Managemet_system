@@ -39,28 +39,44 @@
                             <!-- Menu Item Start -->
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                    <?php 
 
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                    </li>
+                                        //Parent Category Menu
+                                        $sql = "SELECT cat_id AS 'pCatID', cat_name AS 'pCatName' FROM category WHERE is_parent = 0 AND status = 1 ORDER BY cat_name ASC";
+                                        $parentMenu = mysqli_query($db, $sql);
 
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">About</a>
-                                    </li>
+                                        while ( $row = mysqli_fetch_assoc($parentMenu)){
+                                            extract($row);
 
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Dropdown
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </li>
+                                            $subCat = "SELECT cat_id AS 'sCatID', cat_name AS 'sCatName' FROM category WHERE is_parent = '$pCatID' AND status= 1 ORDER BY cat_name ASC";
+
+                                            $subMenu = mysqli_query($db, $subCat);
+                                            $countSubMenu = mysqli_num_rows($subMenu);
+
+                                            if( $countSubMenu == 0 ){ ?>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" aria-current="page" href="category.php?category=<?php echo $pCatName; ?>"><?php echo $pCatName; ?></a>
+                                                </li>
+                                            <?php }
+
+                                            else{ ?>
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="category.php?category=<?php echo $pCatName; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <?php echo $pCatName; ?>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <?php 
+                                                            while( $row = mysqli_fetch_assoc($subMenu)){
+                                                                extract($row);
+                                                                ?>
+                                                                <li><a class="dropdown-item" href="category.php?category=<?php echo $sCatName; ?>"><?php echo $sCatName; ?></a></li>
+                                                            <?php }
+                                                        ?>
+                                                    </ul>
+                                                </li>
+                                            <?php }
+                                        }                                    
+                                    ?>
                                     </li>
                                 </ul>
                             </div>
