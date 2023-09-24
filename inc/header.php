@@ -1,5 +1,6 @@
 <?php 
     ob_start();
+    session_start();
     include "admin/inc/db.php" 
 ?>
 
@@ -31,7 +32,7 @@
                     <!-- Nav Menu Start -->
                     <nav class="navbar navbar-expand-lg ">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="#">Online Library </a>
+                            <a class="navbar-brand" href="index.php">Online Library </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>

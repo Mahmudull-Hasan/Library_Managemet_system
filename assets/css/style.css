@@ -122,3 +122,21 @@ a{
     background: rgba(0, 0, 0, 0.658);
     color: #FFFFFF;
 }
+
+/* Book Details page css */
+.book-details .book-btn{
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+    background: rgb(76, 76, 255);
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 30px;
+    display: block;
+    transition: .5s;
+}
+
+.book-details .book-btn:hover{
+    background: rgba(0, 0, 0, 0.658);
+    color: #FFFFFF;
+}

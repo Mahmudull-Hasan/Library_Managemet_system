@@ -275,12 +275,12 @@
                     } else if ($do == 'Store') {
                         if (isset($_POST['addBook'])) {
                             
-                            $title          = $_POST['title'];
-                            $sub_title      = $_POST['sub_title'];
+                            $title          = mysqli_real_escape_string($db, $_POST['title']);
+                            $sub_title      = mysqli_real_escape_string($db, $_POST['sub_title']);
                             $author_name    = $_POST['author_name'];
                             $quantity       = $_POST['quantity'];
                             $cat_id         = $_POST['cat_id'];
-                            $description    = $_POST['description'];
+                            $description    = mysqli_real_escape_string($db, $_POST['description']);
                             $status         = $_POST['status'];
 
                             $image              = $_FILES['image']['name'];
@@ -404,7 +404,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label>Description</label>
-                                                        <textarea class="form-control" id="description" name="description" rows="30" value="<?php echo $description;?>"></textarea>
+                                                        <textarea class="form-control" id="description" name="description"><?php echo $description;?></textarea>
                                                     </div>
 
 
@@ -442,9 +442,9 @@
                         if (isset($_POST['updateBook'])){ 
 
                             $id             = $_POST['id'];
-                            $title          = $_POST['title'];
-                            $sub_title      = $_POST['sub_title'];
-                            $description    = $_POST['description'];
+                            $title          = mysqli_real_escape_string($db, $_POST['title']);
+                            $sub_title      = mysqli_real_escape_string($db, $_POST['sub_title']);
+                            $description    = mysqli_real_escape_string($db, $_POST['description']);
                             $cat_id         = $_POST['cat_id'];
                             $author_name	= $_POST['author_name'];
                             $quantity       = $_POST['quantity'];

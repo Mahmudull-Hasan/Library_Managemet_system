@@ -63,8 +63,8 @@
         if( isset($_POST['login']))
         {
           //Get the data from user
-          $email = $_POST['email'];
-          $password = $_POST['password'];
+          $email    = mysqli_real_escape_string($db, $_POST['email']);
+          $password = mysqli_real_escape_string($db, $_POST['password']);
 
           if( !empty($password))
           {
@@ -136,7 +136,7 @@
 
 <?php 
   ob_end_flush();
-  // session_destroy();
+  //session_destroy();
 ?>
 </body>
 </html>

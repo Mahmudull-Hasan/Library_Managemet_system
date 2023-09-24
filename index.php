@@ -50,9 +50,17 @@
                                             <h3><?php echo $title; ?></h3>
                                             <p class="quantity" > Quantity: <span><?php echo $quantity; ?> PCs</span></p>
                                             
-                                            <p><?php echo substr($description, 0, 60) ?>.... <a href="#">Read More</a></p>
+                                            <p><?php echo substr($description, 0, 60) ?>.... <a href="book_details.php?b=<?php echo $id; ?>">Read More</a></p>
 
-                                            <a href="#" class="book-btn">Book Now</a>
+                                            <?php 
+                                                if ( empty($_SESSION['email']))
+                                                { ?>
+                                                    <a href="#" class="book-btn"> Login to Reserve Your Book</a>
+                                                <?php }
+                                                else{ ?>
+                                                        <a href="#" class="book-btn"> Book Now </a>
+                                                <?php }    
+                                            ?>
                                         </div>
                                     </div>
 
