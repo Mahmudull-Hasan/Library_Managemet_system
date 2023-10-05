@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Mooli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mooli&display=swap');
 
 body{
 
-    font-family: 'Mooli', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: 'Mooli', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     /* font-family: 'Croissant One', cursive; */
 }
 
@@ -24,6 +23,7 @@ ul{
 }
 ul li {
     text-decoration: none;
+    list-style: none;
 }
 
 a{
@@ -89,6 +89,7 @@ a{
 }
 .book-item .book-info .book-btn {
     font-weight: 600;
+    font-size: 14px;
     text-transform: capitalize;
     color: white;
     background: rgb(76, 76, 255);
@@ -96,7 +97,6 @@ a{
     border-radius: 5px;
     padding: 10px 30px;
     display: block;
-    margin: 0 60px;
     transition: .5s;
 }
 
@@ -116,6 +116,7 @@ a{
     padding: 10px 30px;
     display: block;
     transition: .5s;
+    border: none;
 }
 
 .search-btn:hover{
@@ -137,6 +138,60 @@ a{
 }
 
 .book-details .book-btn:hover{
+    background: rgba(0, 0, 0, 0.658);
+    color: #FFFFFF;
+}
+
+/* User Login Page Section */
+.login-section {
+    padding: 200px 0;
+}
+
+.login-section h2{
+    text-align: center;
+    font-weight: 600;
+}
+.nav-item .img-circle{
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid blue;
+}
+
+/* Booking page section */
+
+.booking-page{
+    padding: 100px 0 0px;
+}
+
+.booking-page .table{
+    margin-top: 50px;
+}
+
+.booking-page h2{
+    padding: 0 0 20px;
+    color:blue;
+}
+
+.booking-page .booking-form{
+    padding: 20px 0;
+}
+
+.booking-form .book-btn{
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    text-transform: capitalize;
+    color: white;
+    background: rgb(76, 76, 255);
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 0px;
+    display: block;
+    transition: .5s;
+    border: none;
+}
+
+.booking-form .book-btn:hover{
     background: rgba(0, 0, 0, 0.658);
     color: #FFFFFF;
 }

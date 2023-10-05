@@ -55,10 +55,10 @@
                                             <?php 
                                                 if ( empty($_SESSION['email']))
                                                 { ?>
-                                                    <a href="#" class="book-btn"> Login to Reserve Your Book</a>
+                                                    <a href="login.php" class="book-btn"> Login to Reserve Your Book</a>
                                                 <?php }
                                                 else{ ?>
-                                                        <a href="#" class="book-btn"> Book Now </a>
+                                                        <a href="booking.php?id=<?php echo $id;?>" class="book-btn"> Book Now </a>
                                                 <?php }    
                                             ?>
                                         </div>

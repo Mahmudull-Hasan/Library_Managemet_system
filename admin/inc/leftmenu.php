@@ -130,6 +130,27 @@
             </li>
           <!-- Manage All Book's end -->
 
+           <!-- Manage All order list  -->
+          <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Manage All Order
+                  <i class="fas fa-angle-left right"></i>
+                  <!-- <span class="badge badge-info right">6</span> -->
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="order-details.php?do=Manage" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage All Order </p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          <!-- Manage All order list  end-->
+
           <!-- Manage user  nav menu start -->
           <li class="nav-header">User Management</li>
           <li class="nav-item">

@@ -16,6 +16,9 @@
     <!-- Bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <!-- Custom Css code -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
@@ -78,7 +81,81 @@
                                             <?php }
                                         }                                    
                                     ?>
-                                    </li>
+
+                                    <?php 
+                                        if ( empty( $_SESSION['user_id']) || empty($_SESSION['email']) ){ ?>
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="login.php">SignIn</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" aria-current="page" href="register.php">SignUp</a>
+                                            </li>
+                                        <?php }
+                                        else if ( $_SESSION['role'] == 2 ) { ?>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="category.php?category=<?php echo $pCatName; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                                <?php 
+                                                    $user_id = $_SESSION['user_id'];
+                                                    $query = "SELECT * FROM users WHERE user_id='$user_id'";
+                                                    $userData = mysqli_query($db, $query);
+
+                                                    while( $row = mysqli_fetch_assoc($userData)){
+
+                                                        $fullname = $row['fullname'];
+                                                        $image = $row['image'];
+
+                                                        if ( !empty( $image)) { ?>
+                                                            <img src="admin/dist/img/users/<?php echo $image;?>" class="img-circle elevation-2" alt="User Image">
+                                                        <?php echo $fullname ; }
+                                                        else{ ?>
+                                                            <img src="admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                                                       <?php echo $fullname ; }                                                   
+                                                    
+                                                    }            
+                                                ?>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="order_history.php" class="dropdown-item"> Booking List </a></li>
+                                                    <li><a href="" class="dropdown-item"> Manage Profile </a></li>
+                                                    <li><a href="logout.php" class="dropdown-item"> Log Out </a></li>
+                                                </ul>
+                                            </li>
+                                        <?php }
+                                        else if( $_SESSION['role'] == 1) { ?>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="category.php?category=<?php echo $pCatName; ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                                <?php 
+                                                    $user_id = $_SESSION['user_id'];
+                                                    $query = "SELECT * FROM users WHERE user_id='$user_id'";
+                                                    $userData = mysqli_query($db, $query);
+
+                                                    while( $row = mysqli_fetch_assoc($userData)){
+
+                                                        $fullname = $row['fullname'];
+                                                        $image = $row['image'];
+
+                                                        if ( !empty( $image)) { ?>
+                                                            <img src="admin/dist/img/users/<?php echo $image;?>" class="img-circle elevation-2" alt="User Image">
+                                                        <?php echo $fullname ; }
+                                                        else{ ?>
+                                                            <img src="admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                                                       <?php echo $fullname ; }                                                   
+                                                    
+                                                    }            
+                                                ?>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="admin/dashboard.php" class="dropdown-item"> Dashboard </a></li>
+                                                    <li><a href="" class="dropdown-item"> Manage Profile </a></li>
+                                                    <li><a href="logout.php" class="dropdown-item"> Log Out </a></li>
+                                                </ul>
+                                            </li>
+                                        <?php }
+                                    ?>
+
+                                    
                                 </ul>
                             </div>
                             <!-- Menu Item end -->

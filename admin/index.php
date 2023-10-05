@@ -88,17 +88,26 @@
             $status                 = $row['status'];
             $join_date              = $row['join_date'];
 
-            if( $email == $_SESSION['email'] && $hassedPass == $password && $_SESSION['role'] == 1)
-            {
-              header("Location: dashboard.php");
+            if ( $_SESSION['role'] == 1){
+
+                if( $email == $_SESSION['email'] && $hassedPass == $password)
+              {
+                header("Location: dashboard.php");
+              }
+              else if( $email != $_SESSION['email'] || $hassedPass != $password)
+              {
+                header("Location: index.php");
+              }
+              else {
+                header("Location: index.php"); 
+              }
+
             }
-            else if( $email != $_SESSION['email'] || $hassedPass != $password || $_SESSION['role'] != 1 )
-            {
-              header("Location: index.php");
+            else{
+              session_unset();
+              session_destroy();
+              header("Location: index.php"); 
             }
-            // else {
-            //   header("Location: index.php"); 
-            // }
 
           }
         }

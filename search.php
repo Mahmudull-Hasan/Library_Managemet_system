@@ -42,7 +42,7 @@
                                                             if (!empty($image)) { ?>
                                                                 <img src="admin/dist/img/books/<?php echo $image; ?>" class="img-fluid">
                                                             <?php } else { ?>
-                                                                <img src="dist/img/books/avatar5.png" class="img-fluid">
+                                                                <img src="admin/dist/img/books/avatar5.png" class="img-fluid">
                                                             <?php }
                                                         ?>
                                                         <div class="author-info">

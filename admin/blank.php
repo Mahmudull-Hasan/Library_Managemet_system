@@ -25,6 +25,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12">
+                            <!-- card-start -->
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Browser Usage</h3>
@@ -41,9 +42,9 @@
                                 <div class="card-body">
 
                                 </div>
-                                    <!-- card body end -->
+                                <!-- card body end -->
                                 
-                                <!-- card-end -->
+                            <!-- card-end -->
                             </div>
                         </div>
                     </div>

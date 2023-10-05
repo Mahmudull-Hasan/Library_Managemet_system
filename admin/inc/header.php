@@ -3,9 +3,12 @@
   ob_start();
   include "inc/db.php";
 
-  if( empty( $_SESSION['user_id']) || empty($_SESSION['email']) )
+  if( empty( $_SESSION['user_id']) || empty($_SESSION['email']))
   {
     header("Location: index.php");
+  }
+  else if ( $_SESSION['role'] == 2) {
+    header("Location: logout.php");
   }
 ?>
 

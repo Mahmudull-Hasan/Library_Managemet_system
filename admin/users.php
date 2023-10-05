@@ -46,7 +46,7 @@
 
                             <!-- card body start -->
                             <div class="card-body">
-                                <table class="table table-striped table-dark table-bordered table-hover">
+                                <table id="datasearch" class="table table-striped table-dark table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col">#Sl</th>
